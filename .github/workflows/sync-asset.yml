@@ -57,10 +57,10 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add -A
-        git diff-index --quiet HEAD || git commit -m "update" -a
+        git commit -m "keep-gha"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+        branch: keep-gha
         force: true
