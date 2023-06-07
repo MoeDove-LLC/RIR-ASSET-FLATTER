@@ -49,7 +49,7 @@ jobs:
       shell: bash
     - name: wrtie something to prevent this action inactive
       run: |
-        echo $(date +%Y-%m-%d) > $GITHUB_WORKSPACE/sync
+        echo $(date +%Y-%m-%d/%H:%M:%S) > $GITHUB_WORKSPACE/sync
       shell: bash
     - name: Commit
       run: |
