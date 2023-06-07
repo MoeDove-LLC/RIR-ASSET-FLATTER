@@ -85,6 +85,7 @@ if old_member != new_member:
     print("old member:",old_member)
     print("new member:",new_member)
 else:
+    dst_json_new = dst_json
     print("same, no update:",as_set_dst)
     
 open(dst_cache_file,"w").write(json.dumps(dst_json_new))
