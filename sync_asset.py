@@ -72,15 +72,18 @@ for as_set in src_asset:
         
 flatted_members = sorted(list(flatted_members.keys()))
 
-if dst_asset != flatted_members:
-    dst_json_new = pack_member(dst_json,map(lambda x:"AS" + str(x),flatted_members))
+old_member = dst_asset
+new_member = list(map(lambda x:"AS" + str(x),flatted_members))
+
+if old_member != new_member:
+    dst_json_new = pack_member(dst_json,new_member)
     payload = json.dumps(dst_json_new)
     response = requests.request("PUT", dst_url, headers=headers, data=payload)
     response.raise_for_status()
     dst_json_new = json.loads(response.text)
     print("updated:",as_set_dst)
-    print("old member:",dst_asset)
-    print("new member:",flatted_members)
+    print("old member:",old_member)
+    print("new member:",new_member)
 else:
     print("same, no update:",as_set_dst)
     
