@@ -48,8 +48,10 @@ def getval(strin):
 src_json = json.loads(requests.request("GET", src_url, headers=headers).text)
 src_asset = extract_member(src_json)
 if dst_cache_file.is_file():
+    print("Previous dst_cache_file found")
     dst_json = json.loads(open(dst_cache_file).read())
 else:
+    print("Previous dst_cache_file not found, download from " + dst_url)
     dst_json = json.loads(requests.request("GET", dst_url, headers=headers).text)
 dst_asset = extract_member(dst_json)
 
