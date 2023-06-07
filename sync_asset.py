@@ -40,6 +40,8 @@ def pack_member(base_json,member_list):
     first_member_idx = index_of_first(old_list,lambda x:x["name"] == "members")
     old_list = list(filter(lambda x:x["name"] != "members",old_list))
     new_list = old_list[0:first_member_idx] + [{"name": "members", "value": member, "referenced-type":"aut-num" if member[:2] == "AS" and member[2:].isdecimal() else "as-set" } for member in member_list] + old_list[first_member_idx:]
+    for item in new_list:
+        item.pop("comment", None)
     base_json["objects"]["object"][0]["attributes"]["attribute"] = new_list
     return base_json
 def getval(strin):
