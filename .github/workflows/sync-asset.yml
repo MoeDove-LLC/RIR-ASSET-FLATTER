@@ -30,7 +30,7 @@ jobs:
       with:
         path: |
           $GITHUB_WORKSPACE/cache
-        key: dst_cache
+        key: dst_cache 20230607
     - name: Install depends
       run: |
         sudo pip3 install pyyaml 
