@@ -79,6 +79,8 @@ if dst_asset != flatted_members:
     response.raise_for_status()
     dst_json_new = json.loads(response.text)
     print("updated:",as_set_dst)
+    print("old member:",dst_asset)
+    print("new member:",flatted_members)
 else:
     print("same, no update:",as_set_dst)
     
