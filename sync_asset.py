@@ -18,7 +18,7 @@ irrdb = "RIPE,APNIC,AFRINIC,ARIN,LACNIC,RADB"
 
 src_url = f"https://rest.db.ripe.net/ripe/as-set/{as_set_src}"
 dst_url = f"https://rest.db.ripe.net/ripe/as-set/{as_set_dst}?password={password}"
-t1_asns = [ 701, 1239, 1299, 2914, 3257, 3320, 3356, 3491, 5511, 6453, 6461, 6762, 6830, 7018, 12956, 174, 1273, 2828, 4134, 4809, 4637, 6939, 7473, 7922, 9002 ]
+t1_asns = [ 13335, 15169, 46489, 16509, 8075, 20940, 32787, 20473, 49304, 53667, 36369, 138997, 701, 1239, 1299, 2914, 3257, 3320, 3356, 3491, 5511, 6453, 6461, 6762, 6830, 7018, 12956, 174, 1273, 2828, 4134, 4809, 4637, 6939, 7473, 7922, 9002 ]
 
 headers = {
   'Content-Type': 'application/json',
