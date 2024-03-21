@@ -77,7 +77,7 @@ for as_set in src_asset:
     for asn in asset_asns:
         flatted_members[asn] = 0
         
-flatted_members = set(sorted(list(flatted_members.keys()))) - set(large_asns)
+flatted_members = sorted(set(list(flatted_members.keys())) - set(large_asns))
 
 old_member = dst_asset
 new_member = list(map(lambda x:"AS" + str(x),flatted_members))
