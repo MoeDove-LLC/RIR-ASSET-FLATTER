@@ -21,6 +21,9 @@ headers = {
   'Content-Type': 'application/xml',
   'Accept': 'application/xml'
 }
+def extract_member(base_json):
+    return list(map(lambda x:x["value"],filter(lambda x:x["name"] == "members", base_json["objects"]["object"][0]["attributes"]["attribute"])))
+
 
 def turn2xml(strin):
     strout = {}
