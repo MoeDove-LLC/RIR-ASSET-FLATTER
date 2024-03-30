@@ -14,7 +14,7 @@ max_depth = int(os.environ["MAX_DEPTH"])
 memeber_cache_file = Path(os.environ["MEM_CACHE_FILE"])
 
 
-dst_cache_file = Path("cache/dst_cache.json")
+dst_cache_file = Path("cache/dst_cache_ripe.json")
 irrdb = "RIPE,APNIC,AFRINIC,ARIN,LACNIC,RADB"
 
 src_url = f"https://rest.db.ripe.net/ripe/as-set/{as_set_src}"

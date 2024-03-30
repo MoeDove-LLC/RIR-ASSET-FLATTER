@@ -13,7 +13,7 @@ as_set_dst = os.environ["AS_SET_DST"]
 apikey = os.environ["ARIN_APIKEY"]
 memeber_cache_file = Path(os.environ["MEM_CACHE_FILE"])
 
-dst_cache_file = Path("cache/dst_cache.json")
+dst_cache_file = Path("cache/dst_cache_arin.json")
 
 dst_url = f"https://reg.arin.net/rest/irr/as-set/{as_set_dst}?apikey={apikey}"
 

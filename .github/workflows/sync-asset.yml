@@ -1,4 +1,4 @@
-name: Sync-RIPE-ASSSET
+name: Sync-ASSSET
 
 on:
   workflow_dispatch:
