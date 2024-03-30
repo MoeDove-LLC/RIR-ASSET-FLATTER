@@ -22,12 +22,6 @@ headers = {
   'Accept': 'application/xml'
 }
 
-def extract_member(base_json):
-    #自原始JSON中取出AS-SET成員
-    base_json = base_json['asSet']['members']['member']
-    for i in range(len(base_json)):
-        base_json[i] = base_json[i]['@name']
-    return sorted(list(base_json))
 def turn2xml(strin):
     strout = {}
     strout['@name'] = strin
