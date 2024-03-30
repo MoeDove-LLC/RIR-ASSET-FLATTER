@@ -37,11 +37,11 @@ def turn2xml(strin):
     strout['@name'] = strin
     return strout
 
-def extract_member(base_json):
-    #自原始JSON中取出AS-SET成員
-    base_json = base_json['asSet']['members']['member']
-    member_list = [member['@name'] for member in base_json]
-    return sorted(member_list, reverse=True)
+
+def pack_member(base_json, member_list):
+    # Pack AS-SET members
+    base_json['asSet']['members']['member'] = list(map(turn2xml, sorted(set(member_list, reserved = True))))
+    return base_json
 
 # SRC AS-SET members retrieval
 if memeber_cache_file.is_file():
