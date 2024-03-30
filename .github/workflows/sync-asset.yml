@@ -23,29 +23,38 @@ jobs:
       GIT_SSH_COMMAND: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa"
     steps:
     - name: Checkout Central Actions Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Cache
       id: cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: |
           $GITHUB_WORKSPACE/cache
         key: dst_cache 20230607
     - name: Install depends
       run: |
-        sudo pip3 install pyyaml 
+        sudo pip3 install pyyaml xmltodict
         sudo apt-get install -y bgpq4
     - name: Get current time
       uses: gerred/actions/current-time@master
       id: current-time
-    - name: Sync ASSET
+    - name: Sync ASSET to RIPE
       run: |
-        python3 $GITHUB_WORKSPACE/sync_asset.py
+        python3 $GITHUB_WORKSPACE/sync_asset_a.py
       env:
         RIPE_MNT_PASSWD: ${{secrets.RIPE_MNT_PASSWD}}
         AS_SET_SRC: ${{vars.AS_SET_SRC}}
-        AS_SET_DST: ${{vars.AS_SET_DST}}
+        AS_SET_DST: ${{vars.AS_SET_DST_RIPE}}
         MAX_DEPTH: ${{vars.MAX_DEPTH}}
+        MEM_CACHE_FILE: ${{vars.MEM_CACHE_FILE}}
+      shell: bash
+    - name: Sync ASSET to ARIN
+      run: |
+        python3 $GITHUB_WORKSPACE/sync_asset_b.py
+      env:
+        ARIN_APIKEY: ${{secrets.ARIN_APIKEY}}
+        AS_SET_DST: ${{vars.AS_SET_DST_ARIN}}
+        MEM_CACHE_FILE: ${{vars.MEM_CACHE_FILE}}
       shell: bash
     - name: wrtie something to prevent this action inactive
       run: |

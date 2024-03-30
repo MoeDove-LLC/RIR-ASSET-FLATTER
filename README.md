@@ -1,5 +1,7 @@
-# RIPE-ASSET-FLATTER
+# RIR-ASSET-FLATTER
 
-SYNC and flattern the AS-SET with RIPE RestFul API
+SYNC and flattern the AS-SET with RIPE & ARIN RestFul API
 
-原神，启动！
+My brand new shit code.
+
+鎮身銀帕可特 斯打頭!

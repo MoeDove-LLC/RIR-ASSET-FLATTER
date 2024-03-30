@@ -11,6 +11,7 @@ as_set_src = os.environ["AS_SET_SRC"]
 as_set_dst = os.environ["AS_SET_DST"]
 password = os.environ["RIPE_MNT_PASSWD"]
 max_depth = int(os.environ["MAX_DEPTH"])
+memeber_cache_file = Path(os.environ["MEM_CACHE_FILE"])
 
 
 dst_cache_file = Path("cache/dst_cache.json")
@@ -81,6 +82,8 @@ flatted_members = sorted(set(list(flatted_members.keys())) - set(large_asns))
 
 old_member = dst_asset
 new_member = list(map(lambda x:"AS" + str(x),flatted_members))
+
+open(memeber_cache_file,"w").write(json.dumps(new_member))
 
 if old_member != new_member:
     dst_json_new = pack_member(dst_json,new_member)
