@@ -18,7 +18,7 @@ irrdb = "RIPE,APNIC,AFRINIC,ARIN,LACNIC,RADB"
 
 src_url = f"https://rest.db.ripe.net/ripe/as-set/{as_set_src}"
 dst_url = f"https://rest.db.ripe.net/ripe/as-set/{as_set_dst}?password={password}"
-t1_asns = [ 13335, 15169, 46489, 16509, 8075, 20940, 32787, 20473, 49304, 53667, 36369, 138997, 701, 1239, 1299, 2914, 3257, 3320, 3356, 3491, 5511, 6453, 6461, 6762, 6830, 7018, 12956, 174, 1273, 2828, 4134, 4809, 4637, 6939, 7473, 7922, 9002 ]
+
 large_asns = [13335, 15169, 46489,16509, 8075, 20940,32787, 20473,49304,53667,36369,138997, 701, 1239, 1299, 2914, 3257, 3320, 3356, 3491, 5511, 6453, 6461, 6762, 6830, 7018, 12956, 174, 1273, 2828, 4134, 4809, 4637, 6939, 7473, 7922, 9002];
 large_as_set = ['AS-HURRICANEV6', 'AS-HURRICANE']
 
@@ -70,7 +70,7 @@ for as_set in src_asset:
         query = ["bgpq4", "-tj","-L",str(max_depth), "-S",irrdb , as_set]
     bgpq4_asns = subprocess.run(query, stdout=subprocess.PIPE).stdout.decode()
     asset_asns = json.loads(bgpq4_asns)["NN"]
-    asset_t1s = sorted(set(asset_asns) & set(t1_asns))
+    asset_t1s = sorted(set(asset_asns) & set(large_asns))
     if len(asset_t1s)>0:
         print(f"Warning: {as_set} contains t1_asns:{asset_t1s}")
         continue
