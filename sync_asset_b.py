@@ -28,14 +28,13 @@ def extract_member(base_json):
     for i in range(len(base_json)):
         base_json[i] = base_json[i]['@name']
     return sorted(list(base_json))
-
 def turn2xml(strin):
     strout = {}
     strout['@name'] = strin
     return strout
-def pack_member(base_json, member_list):
-    # 覆盖AS-SET成员
-    base_json['asSet']['members']['member'] = list(map(turn2xml, sorted(set(member_list), reverse=True)))
+def pack_member(base_json,member_list):
+    #覆蓋AS-SET成員
+    base_json['asSet']['members']['member'] = list(map(turn2xml,sorted(set(member_list))))
     return base_json
 
 #SRC AS-SET 成員取得
