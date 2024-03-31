@@ -42,8 +42,8 @@ def turn2xml(strin):
     return strout
 def pack_member(base_json,member_list):
     #覆蓋AS-SET成員
-    base_json['asSet']['members']['member'] = sorted(list(map(turn2xml,sorted(set(member_list)))))
-    return base_json
+    base_json['asSet']['members']['member'] = sorted(list(map(turn2xml,set(src_as))), key=lambda x: int(x['@name'][2:]))
+    return sorted(base_json)
 
 #SRC AS-SET 成員取得
 if memeber_cache_file.is_file():
