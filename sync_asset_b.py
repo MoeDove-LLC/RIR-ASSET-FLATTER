@@ -23,18 +23,26 @@ headers = {
 }
 
 def extract_member(base_json):
+
+    if "members" not in base_json['asSet'].keys():
+        return list([])
+
     #自原始JSON中取出AS-SET成員
     base_json = base_json['asSet']['members']['member']
-    for i in range(len(base_json)):
-        base_json[i] = base_json[i]['@name']
-    return sorted(list(base_json))
+
+    if isinstance(base_json,dict):
+        return sorted(list([base_json['@name']]))
+    else:
+        for i in range(len(base_json)):
+            base_json[i] = base_json[i]['@name']
+        return sorted(list(base_json))
 def turn2xml(strin):
     strout = {}
     strout['@name'] = strin
     return strout
 def pack_member(base_json,member_list):
     #覆蓋AS-SET成員
-    base_json['asSet']['members']['member'] = list(map(turn2xml,sorted(set(member_list))))
+    base_json['asSet']['members']['member'] = sorted(list(map(turn2xml,sorted(set(member_list)))))
     return base_json
 
 #SRC AS-SET 成員取得
